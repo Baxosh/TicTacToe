@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
-
 // Styles
 import styles from './TicTacToe.module.css'
 
 export default class TicTacToe extends Component {
   state = {
     elements: [
-      { id: 1, value: '' }, // valueOne       ===    123  valueOneX: false, valueOne0: false
-      { id: 2, value: '' }, // valueTwo        ===    456  valueTwoX: false, valueTwo0: false
-      { id: 3, value: '' }, // valueThree   ===    789  valueThreeX: false, valueThree0: false
-      { id: 4, value: '' }, // valueFour      ===    147  valueFourX: false, valueFour0: false
-      { id: 5, value: '' }, // valueFive      ===    258  valueFiveX: false, valueFive0: false
-      { id: 6, value: '' }, // valueSix        ===    369  valueSixX: false, valueSix0: false
-      { id: 7, value: '' }, // valueSeven    ===    159  valueSevenX: false, valueSeven0: false
-      { id: 8, value: '' }, // valueEight    ===    357  valueEightX: false, valueEight0: false
-      { id: 9, value: '' }, // valueNine      ===    123  valueNineX: false, valueNine0: false
+      { id: 1, value: '' },
+      { id: 2, value: '' },
+      { id: 3, value: '' },
+      { id: 4, value: '' },
+      { id: 5, value: '' },
+      { id: 6, value: '' },
+      { id: 7, value: '' },
+      { id: 8, value: '' },
+      { id: 9, value: '' },
     ],
     clickCounter: 0,
     winX: false,
@@ -39,23 +38,27 @@ export default class TicTacToe extends Component {
     } else return
 
     this.setState({ elements, clickCounter })
-
-    this.checkUpElem(elemIdx)
-
-    this.setState({ elements })
   }
 
-  checkUpElem = (elemIdx) => {
-    let winX = this.state.winX
-    let win0 = this.state.win0
+  calculateWinner() {
+    const elemCalc = [...this.state.elements]
 
-    console.log(elemIdx)
+    if (
+      (elemCalc[0].value === '0' &&
+        elemCalc[1].value === '0' &&
+        elemCalc[2].value === '0') ||
+      (elemCalc[3].value === '0' &&
+        elemCalc[4].value === '0' &&
+        elemCalc[5].value === '0')
+    ) {
+      return true
+    }
+  }
 
-    if (elemIdx.value === 'x' && (elemIdx.id === 1 && elemIdx.id === 2 && elemIdx.id === 3)) {
-      winX = true
-    }else console.log('Smile :)')
-    
-    this.setState({ winX, win0 })
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state && this.calculateWinner()) {
+      this.setState({ win0: !this.state.win0 })
+    }
   }
 
   render() {
@@ -68,6 +71,8 @@ export default class TicTacToe extends Component {
               className={styles.listItems}
               key={item.id}
               onClick={() => this.handleClick(item)}
+              value={item.value}
+              ref={this.myRef}
             >
               {item.value === 'x' ? (
                 <div className={styles.tic} key={item.id}>
