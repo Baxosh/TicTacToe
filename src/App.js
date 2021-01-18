@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default class App extends Component {
   render() {
-    // const ScoresHOC = TicTacToe(Scores)
     return (
       <div className={styles.container}>
         <ToastContainer />

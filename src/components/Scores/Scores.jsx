@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import TicTacToe from '../Game/TicTacToe'
 
 // Styles
 import styles from './Scores.module.css'
 
 const Scores = ({ shareState }) => {
-  const { numOfWinX, numOfWin0, draw} = shareState
+  const { numOfWinX, numOfWin0, draw } = shareState
   return (
     <div className={styles.scores__container}>
       <div className={styles.scores__box}>

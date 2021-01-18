@@ -25,7 +25,6 @@ const TicTacToe = (InnerComponent) => {
         numOfWinX: 0,
         numOfWin0: 0,
         draw: 0,
-        restartGame: false,
       }
     }
 
@@ -122,39 +121,35 @@ const TicTacToe = (InnerComponent) => {
         clickCounter,
         winX,
         win0,
-        restartGame,
         numOfWin0,
         numOfWinX,
-        draw
+        draw,
       } = this.state
 
       if (winX) {
         numOfWinX++
       } else if (win0) {
         numOfWin0++
-      }else if (clickCounter === 9) {
+      } else if (clickCounter === 9) {
         draw++
       }
 
-      if (win0 || winX || clickCounter === 9 || restartGame === true) {
+      if (win0 || winX || clickCounter === 9) {
         elements.map((elem) => {
           elem.value = ''
           clickCounter = 0
-          restartGame = false
           win0 = false
           winX = false
         })
       }
-
       this.setState({
         elements,
         clickCounter,
         win0,
         winX,
-        restartGame,
         numOfWin0,
         numOfWinX,
-        draw
+        draw,
       })
     }
 
