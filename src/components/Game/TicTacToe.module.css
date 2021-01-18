@@ -1,5 +1,7 @@
 :root {
-  --borderItemsSize: 6px solid #f8d7d7;
+  --borderItemsSize: 6px solid #00cec9;
+  --backColorTic: #1e3799;
+  --backColorToe: #ff4757;
 }
 
 .tictac__container {
@@ -85,7 +87,7 @@
   width: 10%;
   height: 80%;
   border-radius: 35%;
-  background-color: #fff;
+  background-color: var(--backColorTic);
   transform: rotate(45deg);
 }
 
@@ -93,14 +95,14 @@
   width: 95%;
   height: 100%;
   border-radius: 35%;
-  background-color: #fff;
+  background-color: var(--backColorTic);
   transform: rotate(90deg);
 }
 
 .toe {
   width: 75%;
   height: 75%;
-  border: 12px solid #fff;
+  border: 12px solid var(--backColorToe);
   border-radius: 50%;
 }
 

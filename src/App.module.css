@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #bdbdbd;
+  background-color: #f1f2f6;
   font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-left: -200px;
 }
 
 .game__container {

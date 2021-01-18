@@ -6,7 +6,7 @@ import { Scores } from './components/Scores/Scores'
 
 //Styles
 import styles from './App.module.css'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default class App extends Component {

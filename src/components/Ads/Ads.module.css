@@ -1,9 +1,14 @@
-
-
-
 .adsService {
   height: 700px;
   display: flex;
   align-items: center;
+}
 
+.adsService img {
+  -webkit-box-shadow: 0 0 5px 5px #9cf2ff;
+  box-shadow: 0 0 5px 5px #9cf2ff;
+  outline: 2px solid #9cff63;
+  outline-offset: 2px;
+  /* border-radius: 15px;
+  border: 2px dashed #ff4757; */
 }

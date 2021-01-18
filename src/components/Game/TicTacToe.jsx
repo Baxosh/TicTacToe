@@ -22,29 +22,23 @@ export default class TicTacToe extends Component {
       clickCounter: 0,
       winX: false,
       win0: false,
-      // restartGame: false,
+      restartGame: false
     }
   }
 
   handleClick = (item) => {
-    const elements = [...this.state.elements]
+    let {elements, clickCounter, winX, win0} = this.state
     const index = elements.findIndex((x) => x.id === item.id)
-    let clickCounter = this.state.clickCounter
-  
-    let winX = this.state.winX
-    let win0 = this.state.win0
 
     let elemIdx = elements[index]
 
-    if ((winX || win0) && elements[index].value === '') {
-      elements[index].value = ''
-      clickCounter = clickCounter
-    } else if ((winX || win0) && elements[index].value === '0') {
-      elements[index].value = '0'
-      clickCounter = clickCounter
-    } else if ((winX || win0) && elements[index].value === 'x') {
-      elements[index].value = 'x'
-      clickCounter = clickCounter
+    if (win0 || winX || clickCounter === 9) {
+      elements.map((item) => {
+        item.value = ''
+        clickCounter = 0
+        win0 = false
+        winX = false
+      })
     } else if (elemIdx.value === '' && clickCounter % 2 !== 0) {
       elemIdx.value = 'x'
       clickCounter++
@@ -53,7 +47,7 @@ export default class TicTacToe extends Component {
       clickCounter++
     } else return
 
-    this.setState({ elements, clickCounter })
+    this.setState({ elements, clickCounter, win0, winX })
   }
 
   calculateWinner() {
@@ -119,50 +113,65 @@ export default class TicTacToe extends Component {
     }
   }
 
-  restartGame() {
-    if (this.state.winX || this.state.win0) {
-      let notify = toast.success('Wow You are winner !')
-    }
-  }
+  // restartGame() {
+  // if (this.state.winX || this.state.win0) {
+  //   return true
+  // }
+  // }
+
+  // settingInterval() {
+  //   const elements = [...this.state.elements]
+  //   let clickCounter = this.state.clickCounter
+  //   let winX = this.state.winX
+  //   let win0 = this.state.win0
+
+  //   if (win0 === false && winX === false && clickCounter === 9) {
+  //     elements.map((item) => {
+  //       item.value = ''
+  //       this.setState({ elements, clickCounter: 0 })
+  //     })
+  //   }
+  // }
+   // this.settingInterval()
+      // let timeOut = setInterval(() => {
+      // }, 4000)
+      // clearInterval(timeOut)
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState !== this.state) {
       this.calculateWinner()
-      this.restartGame()
     }
   }
 
   render() {
-    const { elements} = this.state
-    const notify = this
+    const { elements, restartGame } = this.state
     return (
       <div className={styles.tictac__container}>
-        {this.restartGame({notify}) ? (
+        {restartGame ? (
           <>
-            <button onClick={notify}></button>
+            <div>Hello World !</div>
           </>
         ) : (
-          console.log('smile')
+          <ul className={styles.tictac__container__unOrderList}>
+            {elements.map((item) => (
+              <li
+                className={styles.listItems}
+                key={item.id}
+                onClick={() => this.handleClick(item)}
+              >
+                {item.value === 'x' ? (
+                  <div className={styles.tic} key={item.id}>
+                    <div className={styles.tac} key={item.id}></div>
+                  </div>
+                ) : item.value === '0' ? (
+                  <div className={styles.toe} key={item.id}></div>
+                ) : (
+                  item.value && <div className={styles.disNone}></div>
+                )}
+              </li>
+            ))}
+          </ul>
         )}
-        <ul className={styles.tictac__container__unOrderList}>
-          {elements.map((item) => (
-            <li
-              className={styles.listItems}
-              key={item.id}
-              onClick={() => this.handleClick(item)}
-            >
-              {item.value === 'x' ? (
-                <div className={styles.tic} key={item.id}>
-                  <div className={styles.tac} key={item.id}></div>
-                </div>
-              ) : item.value === '0' ? (
-                <div className={styles.toe} key={item.id}></div>
-              ) : (
-                item.value && <div className={styles.disNone}></div>
-              )}
-            </li>
-          ))}
-        </ul>
       </div>
     )
   }
