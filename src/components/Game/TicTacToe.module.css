@@ -8,7 +8,6 @@
 .tictac__container {
   width: var(--gameWidthHeight);
   height: var(--gameWidthHeight);
-  margin-top: 100px;
 }
 
 .tictac__container__unOrderList {
@@ -116,8 +115,6 @@
   left: 0;
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-start;
-  align-items: center; */
 }
 
 .modalLeft {
@@ -140,7 +137,7 @@
 .modalCenterTop {
   background-color: #00000075;
   width: 100%;
-  height: 110px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,7 +147,16 @@
 .modalCenterBottom {
   background-color: #00000075;
   width: 100%;
-  height: 170px;
+  height: 360px;
+}
+
+.modalCenterCenter {
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 22px 1px #59ff7a;
+  box-shadow: 0 0 22px 1px #59ff7a;
+  width: 100%;
+  height: 100%;
 }
 
 .modalBtn {
