@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { toast } from 'react-toastify'
 
 // Styles
 import styles from './TicTacToe.module.css'
 
-export default class TicTacToe extends Component {
+const TicTacToe = (InnerComponent) => {
+return class  extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -22,24 +22,16 @@ export default class TicTacToe extends Component {
       clickCounter: 0,
       winX: false,
       win0: false,
-      restartGame: false
+      restartGame: false,
     }
   }
 
   handleClick = (item) => {
-    let {elements, clickCounter, winX, win0} = this.state
+    let { elements, clickCounter, winX, win0 } = this.state
     const index = elements.findIndex((x) => x.id === item.id)
-
     let elemIdx = elements[index]
 
-    if (win0 || winX || clickCounter === 9) {
-      elements.map((item) => {
-        item.value = ''
-        clickCounter = 0
-        win0 = false
-        winX = false
-      })
-    } else if (elemIdx.value === '' && clickCounter % 2 !== 0) {
+    if (elemIdx.value === '' && clickCounter % 2 !== 0) {
       elemIdx.value = 'x'
       clickCounter++
     } else if (elemIdx.value === '' && clickCounter % 2 === 0) {
@@ -47,13 +39,15 @@ export default class TicTacToe extends Component {
       clickCounter++
     } else return
 
-    this.setState({ elements, clickCounter, win0, winX })
+    this.setState({ elements, clickCounter, win0, winX }, () => {
+      this.setState({})
+    })
   }
 
   calculateWinner() {
     const elemCalc = [...this.state.elements]
-    const win0 = this.state
-    const winX = this.state
+    let win0 = this.state
+    let winX = this.state
 
     if (
       // Calculation winner
@@ -113,66 +107,104 @@ export default class TicTacToe extends Component {
     }
   }
 
-  // restartGame() {
-  // if (this.state.winX || this.state.win0) {
-  //   return true
-  // }
-  // }
+  handleClickBox = () => {
+    let { elements, clickCounter, winX, win0, restartGame } = this.state
 
-  // settingInterval() {
-  //   const elements = [...this.state.elements]
-  //   let clickCounter = this.state.clickCounter
-  //   let winX = this.state.winX
-  //   let win0 = this.state.win0
+    if (win0 || winX || clickCounter === 9 || restartGame === true) {
+      elements.map((elem) => {
+        elem.value = ''
+        clickCounter = 0
+        restartGame = false
+        win0 = false
+        winX = false
+      })
+    }
+    this.setState({ elements, clickCounter, win0, winX, restartGame })
+  }
 
-  //   if (win0 === false && winX === false && clickCounter === 9) {
-  //     elements.map((item) => {
-  //       item.value = ''
-  //       this.setState({ elements, clickCounter: 0 })
-  //     })
-  //   }
-  // }
-   // this.settingInterval()
-      // let timeOut = setInterval(() => {
-      // }, 4000)
-      // clearInterval(timeOut)
-
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     if (prevState !== this.state) {
       this.calculateWinner()
     }
   }
 
   render() {
-    const { elements, restartGame } = this.state
+    const { elements, winX, win0, clickCounter } = this.state
+    const {
+      listItems,
+      tic,
+      tac,
+      toe,
+      disNone,
+      modalBox,
+      modalBtn,
+      modalHeading,
+      modalLeft,
+      modalRight,
+      modalCenterTop,
+      modalCenterBottom,
+      modalCenter,
+    } = styles
     return (
       <div className={styles.tictac__container}>
-        {restartGame ? (
-          <>
-            <div>Hello World !</div>
-          </>
-        ) : (
-          <ul className={styles.tictac__container__unOrderList}>
-            {elements.map((item) => (
-              <li
-                className={styles.listItems}
-                key={item.id}
-                onClick={() => this.handleClick(item)}
+        <div
+          className={
+            winX
+              ? modalBox
+              : win0
+              ? modalBox
+              : clickCounter === 9
+              ? modalBox
+              : disNone
+          }
+        >
+          <div className={modalLeft}></div>
+          <div className={modalCenter}>
+            <div className={modalCenterTop}>
+              <button
+                className={modalBtn}
+                onClick={() => this.handleClickBox()}
               >
-                {item.value === 'x' ? (
-                  <div className={styles.tic} key={item.id}>
-                    <div className={styles.tac} key={item.id}></div>
-                  </div>
-                ) : item.value === '0' ? (
-                  <div className={styles.toe} key={item.id}></div>
-                ) : (
-                  item.value && <div className={styles.disNone}></div>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
+                Restart Game
+              </button>
+              <h1 className={modalHeading}>
+                {winX
+                  ? 'X is winner.'
+                  : win0
+                  ? '0 is winner.'
+                  : clickCounter === 9
+                  ? 'Draw !'
+                  : 'Waiting for "Winner".'}
+              </h1>
+            </div>
+            {/* <div className={modalCenterCenter}></div> */}
+            <div className={modalCenterBottom}></div>
+          </div>
+          <div className={modalRight}></div>
+        </div>
+        <ul className={styles.tictac__container__unOrderList}>
+          {elements.map((item) => (
+            <li
+              className={listItems}
+              key={item.id}
+              onClick={() => this.handleClick(item)}
+            >
+              {item.value === 'x' ? (
+                <div className={tic} key={item.id}>
+                  <div className={tac} key={item.id}></div>
+                </div>
+              ) : item.value === '0' ? (
+                <div className={toe} key={item.id}></div>
+              ) : (
+                item.value && <div className={disNone}></div>
+              )}
+            </li>
+          ))}
+        </ul>
+        <InnerComponent shareState={this.props} />
       </div>
     )
   }
-}
+}}
+
+export default TicTacToe

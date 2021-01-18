@@ -2,11 +2,13 @@
   --borderItemsSize: 6px solid #00cec9;
   --backColorTic: #1e3799;
   --backColorToe: #ff4757;
+  --gameWidthHeight: 350px;
 }
 
 .tictac__container {
-  width: 400px;
-  height: 400px;
+  width: var(--gameWidthHeight);
+  height: var(--gameWidthHeight);
+  margin-top: 100px;
 }
 
 .tictac__container__unOrderList {
@@ -106,6 +108,93 @@
   border-radius: 50%;
 }
 
+.modalBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-start;
+  align-items: center; */
+}
+
+.modalLeft {
+  width: 37.33%;
+  background-color: #00000075;
+}
+
+.modalCenter {
+  width: 26%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modalRight {
+  width: 37%;
+  background-color: #00000075;
+}
+
+.modalCenterTop {
+  background-color: #00000075;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modalCenterBottom {
+  background-color: #00000075;
+  width: 100%;
+  height: 170px;
+}
+
+.modalBtn {
+  width: 200px;
+  height: 40px;
+  background-color: #4add36ce;
+  outline: none;
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 20px;
+  color: #a77d7d;
+  cursor: pointer;
+
+  animation: btnChanger 2.5s linear infinite alternate;
+}
+
+.modalHeading {
+  color: #fbfbfb;
+}
+
 .disNone {
   display: none;
+}
+
+/* Animation */
+
+@keyframes btnChanger {
+  0% {
+    transform: scale(0.95);
+  }
+  20% {
+    transform: scale(1.1);
+  }
+  40% {
+    transform: scale(0.95);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.95);
+  }
 }
