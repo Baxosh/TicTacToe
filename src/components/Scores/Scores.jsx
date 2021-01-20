@@ -17,7 +17,7 @@ const Scores = ({ shareState }) => {
         <h2>{draw ?? '0'}</h2>
       </div>
       <div className={styles.scores__box}>
-        <p>Computer-(0)</p>
+        <p>Player-(0)</p>
         <h2>{numOfWin0 ?? '0'}</h2>
       </div>
     </div>

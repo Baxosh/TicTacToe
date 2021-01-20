@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { Login } from '../Login'
 
 // Styles
 import styles from './TicTacToe.module.css'
 
-const TicTacToe = (InnerComponent) => {
+export const TicTacToe = (InnerComponent) => {
   return class TicTacToeClass extends Component {
     constructor(props) {
       super(props)
@@ -25,6 +26,7 @@ const TicTacToe = (InnerComponent) => {
         numOfWinX: 0,
         numOfWin0: 0,
         draw: 0,
+        user: '',
       }
     }
 
@@ -33,9 +35,7 @@ const TicTacToe = (InnerComponent) => {
       const index = elements.findIndex((x) => x.id === item.id)
       let elemIdx = elements[index]
 
-      if (winX) {
-        console.log('Smile :)')
-      }
+      // let idElem = elemIdx.id
 
       if (elemIdx.value === '' && clickCounter % 2 === 0) {
         elemIdx.value = 'x'
@@ -44,6 +44,22 @@ const TicTacToe = (InnerComponent) => {
         elemIdx.value = '0'
         clickCounter++
       } else return
+
+      // let rand = (Math.floor(Math.random() * 9) + 1)
+      // if (
+      //   elemIdx.value === '' &&
+      //   elemIdx.value !== 'x' &&
+      //   elemIdx.value !== '0' && idElem !== rand
+      // ) {
+      //   elemIdx.value = 'x'
+      //   if ( rand === 5 ) {
+      //     rand = ((rand + 3))
+      //     elements[rand].value = '0'
+      //   }else if (rand === 6) {
+
+      //   }
+      //   clickCounter++
+      // } else return
 
       this.setState({ elements, clickCounter, win0, winX }, () => {
         this.setState({})
@@ -54,8 +70,6 @@ const TicTacToe = (InnerComponent) => {
       const elemCalc = [...this.state.elements]
       let win0 = this.state
       let winX = this.state
-      let numOfWinX = this.state
-      let numOfWin0 = this.state
 
       if (
         // Calculation winner
@@ -159,6 +173,18 @@ const TicTacToe = (InnerComponent) => {
       }
     }
 
+    // handleChange() {
+    //   const { user } = this.state
+    //   // if (this.state.user.length >= 5 ) {
+    //   console.log('Smile :)')
+    //   // }
+    //   this.setState({ user })
+    // }
+
+    // componentDidMount() {
+    //   this.props = this.state.user
+    // }
+
     render() {
       const { elements, winX, win0, clickCounter } = this.state
       const {
@@ -234,6 +260,8 @@ const TicTacToe = (InnerComponent) => {
             ))}
           </ul>
           <InnerComponent shareState={this.state} />
+
+          {/* {!user && <Login value={user} handleChange={this.handleChange} />} */}
         </div>
       )
     }

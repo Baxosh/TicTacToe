@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default class App extends Component {
   render() {
+    // const {user, value} = this.state
     return (
       <div className={styles.container}>
         <ToastContainer />
