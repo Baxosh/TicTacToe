@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Login } from '../Login'
 
 // Styles
 import styles from './TicTacToe.module.css'
@@ -26,7 +25,6 @@ export const TicTacToe = (InnerComponent) => {
         numOfWinX: 0,
         numOfWin0: 0,
         draw: 0,
-        user: '',
       }
     }
 
@@ -173,18 +171,6 @@ export const TicTacToe = (InnerComponent) => {
       }
     }
 
-    // handleChange() {
-    //   const { user } = this.state
-    //   // if (this.state.user.length >= 5 ) {
-    //   console.log('Smile :)')
-    //   // }
-    //   this.setState({ user })
-    // }
-
-    // componentDidMount() {
-    //   this.props = this.state.user
-    // }
-
     render() {
       const { elements, winX, win0, clickCounter } = this.state
       const {
@@ -260,8 +246,6 @@ export const TicTacToe = (InnerComponent) => {
             ))}
           </ul>
           <InnerComponent shareState={this.state} />
-
-          {/* {!user && <Login value={user} handleChange={this.handleChange} />} */}
         </div>
       )
     }
