@@ -108,60 +108,17 @@
 }
 
 .modalBox {
-  width: 100%;
-  height: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-}
-
-.modalLeft {
-  width: 37.33%;
-  background-color: #00000075;
-}
-
-.modalCenter {
-  width: 26%;
+  left: 46%; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-
-.modalRight {
-  width: 37%;
-  background-color: #00000075;
-}
-
-.modalCenterTop {
-  background-color: #00000075;
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.modalCenterBottom {
-  background-color: #00000075;
-  width: 100%;
-  height: 360px;
-}
-
-.modalCenterCenter {
-  border: none;
-  border-radius: 10px;
-  -webkit-box-shadow: 0 0 22px 1px #59ff7a;
-  box-shadow: 0 0 22px 1px #59ff7a;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
 }
 
 .modalBtn {
-  width: 200px;
-  height: 40px;
+  width: 150px;
+  height: 30px;
   background-color: #4add36ce;
   outline: none;
   border: none;
@@ -170,12 +127,21 @@
   font-size: 20px;
   color: #a77d7d;
   cursor: pointer;
+  margin: 10px 0 0 50px;
+  /* position: relative; */
+  /* top: 0; */
+
 
   animation: btnChanger 2.5s linear infinite alternate;
 }
 
 .modalHeading {
-  color: #fbfbfb;
+  display: block;
+  width: 200px;
+  text-align: center;
+  font-size: 20px;
+  color: #222;
+  margin: 10px 0 10px 0;
 }
 
 .disNone {
@@ -204,3 +170,42 @@
     transform: scale(0.95);
   }
 }
+
+/* Media queries */
+@media only screen and (max-width: 1100px) and (max-height: 600px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+  .toe {
+    border: 10px solid var(--backColorToe);
+  }
+
+  .modalBox {
+    left: 35%;
+  }
+
+  .modalBtn {
+    margin-left: 18px;
+  }
+}
+
+@media only screen and  (max-width: 800px) and (max-height: 500px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+    align-items: center;
+  }
+  .toe {
+    border: 8px solid var(--backColorToe);
+  }
+}
+
+/* @media only screen and (max-width: 1100px) and (max-height: 600px) {
+  .tictac__container {
+    justify-content: flex-start;
+  }
+} */

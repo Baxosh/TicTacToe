@@ -147,6 +147,7 @@ export const TicTacToe = (InnerComponent) => {
       }
 
       if (win0 || winX || clickCounter === 9) {
+        // eslint-disable-next-line array-callback-return
         elements.map((elem) => {
           elem.value = ''
           clickCounter = 0
@@ -202,29 +203,18 @@ export const TicTacToe = (InnerComponent) => {
                 : disNone
             }
           >
-            <div className={modalLeft}></div>
-            <div className={modalCenter}>
-              <div className={modalCenterTop}>
-                <button
-                  className={modalBtn}
-                  onClick={() => this.handleClickBox()}
-                >
-                  Restart Game
-                </button>
-                <h1 className={modalHeading}>
-                  {winX
-                    ? 'X is winner.'
-                    : win0
-                    ? '0 is winner.'
-                    : clickCounter === 9
-                    ? 'Draw !'
-                    : 'Waiting for "Winner".'}
-                </h1>
-              </div>
-              <div className={modalCenterCenter}></div>
-              <div className={modalCenterBottom}></div>
-            </div>
-            <div className={modalRight}></div>
+            <button className={modalBtn} onClick={() => this.handleClickBox()}>
+              Restart Game
+            </button>
+            <h1 className={modalHeading}>
+              {winX
+                ? 'X is winner.'
+                : win0
+                ? '0 is winner.'
+                : clickCounter === 9
+                ? 'Draw !'
+                : 'Waiting for "Winner".'}
+            </h1>
           </div>
           <ul className={styles.tictac__container__unOrderList}>
             {elements.map((item) => (
