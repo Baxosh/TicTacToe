@@ -183,58 +183,70 @@ export const TicTacToe = (InnerComponent) => {
         modalBox,
         modalBtn,
         modalHeading,
-        modalLeft,
-        modalRight,
-        modalCenterTop,
-        modalCenterBottom,
-        modalCenter,
-        modalCenterCenter,
+        modalGrade,
+        unOrderContainer,
       } = styles
       return (
         <div className={styles.tictac__container}>
-          <div
-            className={
-              winX
-                ? modalBox
-                : win0
-                ? modalBox
-                : clickCounter === 9
-                ? modalBox
-                : disNone
-            }
-          >
-            <button className={modalBtn} onClick={() => this.handleClickBox()}>
-              Restart Game
-            </button>
-            <h1 className={modalHeading}>
-              {winX
-                ? 'X is winner.'
-                : win0
-                ? '0 is winner.'
-                : clickCounter === 9
-                ? 'Draw !'
-                : 'Waiting for "Winner".'}
-            </h1>
-          </div>
-          <ul className={styles.tictac__container__unOrderList}>
-            {elements.map((item) => (
-              <li
-                className={listItems}
-                key={item.id}
-                onClick={() => this.handleClick(item)}
+          <div className={unOrderContainer}>
+            <div
+              className={
+                winX
+                  ? modalBox
+                  : win0
+                  ? modalBox
+                  : clickCounter === 9
+                  ? modalBox
+                  : disNone
+              }
+            >
+              <button
+                className={modalBtn}
+                onClick={() => this.handleClickBox()}
               >
-                {item.value === 'x' ? (
-                  <div className={tic} key={item.id}>
-                    <div className={tac} key={item.id}></div>
-                  </div>
-                ) : item.value === '0' ? (
-                  <div className={toe} key={item.id}></div>
-                ) : (
-                  item.value && <div className={disNone}></div>
-                )}
-              </li>
-            ))}
-          </ul>
+                Restart
+              </button>
+              <h1 className={modalHeading}>
+                {winX
+                  ? 'X is winner.'
+                  : win0
+                  ? '0 is winner.'
+                  : clickCounter === 9
+                  ? 'Draw !'
+                  : 'Waiting for "Winner".'}
+              </h1>
+            </div>
+            <div
+              className={
+                winX
+                  ? modalGrade
+                  : win0
+                  ? modalGrade
+                  : clickCounter === 9
+                  ? modalGrade
+                  : disNone
+              }
+            ></div>
+            <ul className={styles.tictac__container__unOrderList}>
+              {elements.map((item) => (
+                <li
+                  className={listItems}
+                  key={item.id}
+                  onClick={() => this.handleClick(item)}
+                >
+                  {item.value === 'x' ? (
+                    <div className={tic} key={item.id}>
+                      <div className={tac} key={item.id}></div>
+                    </div>
+                  ) : item.value === '0' ? (
+                    <div className={toe} key={item.id}></div>
+                  ) : (
+                    item.value && <div className={disNone}></div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
           <InnerComponent shareState={this.state} />
         </div>
       )

@@ -14,11 +14,46 @@ body {
 .container {
   width: 1200px;
   height: 600px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   margin: 0 0 0 85px;
   padding: 0;
+}
+
+.container:after {
+  --border-width: 3px;
+  position: absolute;
+  content: '';
+  top: calc(-1 * var(--border-width));
+  left: calc(-1 * var(--border-width));
+  z-index: -1;
+  width: calc(100% + var(--border-width) * 2);
+  /* height: calc(100% + var(--border-width) * 2); */
+  height: 100%;
+  background: linear-gradient(
+    60deg,
+    hsl(224, 85%, 66%),
+    hsl(269, 85%, 66%),
+    hsl(314, 85%, 66%),
+    hsl(359, 85%, 66%),
+    hsl(44, 85%, 66%),
+    hsl(89, 85%, 66%),
+    hsl(134, 85%, 66%),
+    hsl(179, 85%, 66%)
+  );
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  /* border-radius: calc(2 * var(--border-width)); */
+  animation: moveGradient 4s alternate infinite;
+  height: 100%;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .game__container {
@@ -48,16 +83,23 @@ body {
   }
 }
 
-@media only screen and (max-width: 401px) and (max-height: 701px) {
+@media only screen and (max-width: 401px) and (max-height: 501px) {
+  .container:after {
+    height: 500px;
+  }
+
   .game__container {
-    /* order: 2; */
     width: 250px;
     height: 350px;
     justify-content: flex-start;
   }
 }
 
-@media only screen and (max-width: 501px) and (max-height: 701px) {
+@media only screen and (max-width: 501px) and (max-height: 601px) {
+  
+  .container:after {
+    height: 600px;
+  }
   .game__container {
     width: 250px;
     height: 350px;
@@ -65,9 +107,21 @@ body {
   }
 }
 @media only screen and (max-width: 601px) and (max-height: 701px) {
+  
+  .container:after {
+    height: 600px;
+  }
+
   .game__container {
     width: 250px;
     height: 350px;
     justify-content: flex-start;
   }
 }
+
+@media only screen  and (max-height: 801px) {
+  .container:after {
+    height: 650px;
+  }
+}
+
