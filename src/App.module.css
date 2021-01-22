@@ -123,12 +123,57 @@ body:after {
   } 
 }
 
+@media only screen and (max-height: 601px) {
+  .container {
+    height: 100vh;
+  }
+  .container:after {
+    height: 700px;
+  }
+
+  .game__container {
+    height: 350px;
+  } 
+
+}
+
+@media only screen and (max-height: 701px) {
+  .container {
+    height: 100vh;
+  }
+  .container:after {
+    height: 800px;
+  }
+  .game__container {
+    height: 400px;
+  }
+
+}
+
+@media only screen and (max-height: 801px) {
+  .container {
+    height: 100vh;
+  }
+  .container:after {
+    height: 100vh;
+  }
+
+  .game__container {
+    height: 500px;
+  }
+
+}
+
 @media only screen and (max-height: 901px) {
   .container {
     height: 100vh;
   }
   .container:after {
     height: 100vh;
+  }
+
+  .game__container {
+    height: 600px;
   }
 
 }

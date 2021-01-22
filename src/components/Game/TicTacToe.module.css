@@ -198,3 +198,60 @@
     height: 250px;
   }
 }
+
+/* @media only screen and (max-height: 601px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+  }
+  .unOrderContainer {
+    width: 250px;
+    height: 250px;
+  }
+  .modalGrade {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media only screen and (max-height: 701px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+  }
+  .unOrderContainer {
+    width: 250px;
+    height: 250px;
+  }
+  .modalGrade {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media only screen and (max-height: 801px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+  }
+  .unOrderContainer {
+    width: 250px;
+    height: 250px;
+  }
+  .modalGrade {
+    width: 250px;
+    height: 250px;
+  }
+}
+@media only screen and (max-height: 901px) {
+  .tictac__container {
+    width: 250px;
+    height: 250px;
+  }
+  .unOrderContainer {
+    width: 250px;
+    height: 250px;
+  }
+  .modalGrade {
+    width: 250px;
+    height: 250px;
+  }
+} */
