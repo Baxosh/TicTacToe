@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import TicTacToe from './components/Game/TicTacToe'
-import { Ads } from './components/Ads/Ads'
 import { Mute } from './components/Mute/Mute'
 import Scores from './components/Scores/Scores'
 
@@ -11,17 +10,18 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export default class App extends Component {
   render() {
-    // const {user, value} = this.state
     return (
       <div className={styles.container}>
+        
         <ToastContainer />
-        <Ads />
+
         <div className={styles.game__container}>
           <TicTacToe />
           <Scores />
         </div>
-        <Ads />
+
         <Mute />
+
       </div>
     )
   }

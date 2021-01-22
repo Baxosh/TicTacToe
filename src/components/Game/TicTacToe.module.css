@@ -11,8 +11,8 @@
 }
 
 .unOrderContainer {
-  width: 350px;
-  height: 350px;
+  width: var(--gameWidthHeight);
+  height: var(--gameWidthHeight);
   align-self: center;
   justify-self: center;
 }
@@ -28,10 +28,12 @@
 }
 
 .modalGrade {
-  width: 350px;
-  height: 350px;
+  width: var(--gameWidthHeight);
+  height: var(--gameWidthHeight);
   position: absolute;
   background: transparent;
+  -webkit-box-shadow: 0 0 12px 12px #26ffb0;
+  box-shadow: 0 0 12px 12px #26ffb0;
 }
 
 .listItems {
@@ -123,18 +125,17 @@
 
 .modalBox {
   position: absolute;
-  top: 20px;
+  top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 350px;
-  height: 50px;
 }
 
 .modalBtn {
   width: 150px;
-  height: 40px;
+  height: 30px;
   background-color: #4add36ce;
   outline: none;
   border: none;
@@ -153,7 +154,7 @@
   text-align: center;
   font-size: 23px;
   color: #222;
-  margin: 15px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .disNone {
@@ -183,77 +184,17 @@
   }
 }
 
-/* Media queries */
-@media only screen and (max-width: 1100px) and (max-height: 600px) {
+@media only screen and (max-width: 350px) {
   .tictac__container {
     width: 250px;
     height: 250px;
-    justify-content: center;
-    align-items: center;
   }
   .unOrderContainer {
     width: 250px;
     height: 250px;
   }
-
-  .modalBox {
-    width: 250px;
-    position: absolute;
-  }
   .modalGrade {
     width: 250px;
     height: 250px;
-  }
-
-  .toe {
-    border: 10px solid var(--backColorToe);
-  }
-
-  .modalBtn {
-    margin-left: 18px;
-  }
-}
-
-@media only screen and (max-width: 800px) and (max-height: 600px) {
-  .tictac__container {
-    width: 250px;
-    height: 250px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modalBox {
-    width: 250px;
-  }
-
-  .toe {
-    border: 8px solid var(--backColorToe);
-  }
-}
-
-@media only screen and (max-width: 600px) and (max-height: 800px) {
-
-  .modalBox {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    border: none;
-  }
-  
-  .modalBtn {
-    width: 50px;
-    height: 50px;
-    border-radius: 40%;
-    margin: 0;
-    padding: 0;
-    font-size: 10px;
-    color: red;
-  }
-
-  .modalHeading {
-    font-size: 10px;
-    padding: 10px 0 0 0;
   }
 }

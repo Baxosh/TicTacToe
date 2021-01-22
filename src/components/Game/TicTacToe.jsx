@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+// import useSound from 'use-sound';
+import tick from '../../Audio/TicTac';
+
 // Styles
 import styles from './TicTacToe.module.css'
 
@@ -25,14 +28,21 @@ export const TicTacToe = (InnerComponent) => {
         numOfWinX: 0,
         numOfWin0: 0,
         draw: 0,
+        play: true,
       }
     }
+
+    play () {
+      return tick
+    }
+
 
     handleClick = (item) => {
       let { elements, clickCounter, winX, win0 } = this.state
       const index = elements.findIndex((x) => x.id === item.id)
       let elemIdx = elements[index]
 
+      this.play()
       // let idElem = elemIdx.id
 
       if (elemIdx.value === '' && clickCounter % 2 === 0) {
@@ -42,6 +52,8 @@ export const TicTacToe = (InnerComponent) => {
         elemIdx.value = '0'
         clickCounter++
       } else return
+
+      // this.state.play()
 
       // let rand = (Math.floor(Math.random() * 9) + 1)
       // if (
@@ -169,6 +181,7 @@ export const TicTacToe = (InnerComponent) => {
     componentDidUpdate(prevState) {
       if (prevState !== this.state) {
         this.calculateWinner()
+        this.state.play = tick
       }
     }
 
@@ -230,6 +243,8 @@ export const TicTacToe = (InnerComponent) => {
             <ul className={styles.tictac__container__unOrderList}>
               {elements.map((item) => (
                 <li
+                  type='range'
+
                   className={listItems}
                   key={item.id}
                   onClick={() => this.handleClick(item)}
